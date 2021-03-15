@@ -1,0 +1,8 @@
+# Ignore everything
+/*
+/*/
+
+# Except this:
+!/flightprices-monitor/
+!/README.md
+!/.gitignore
