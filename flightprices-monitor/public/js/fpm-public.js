@@ -1,17 +1,34 @@
 (function( $ ) {
   'use strict';
   
-  // Makes a request to the price API for each .flymon-tag element in the page
+  // Makes a price request for each .flymon-tag element in the page
   $(document).ready(function() {
     
-    // TODO: widget sizes, localization; error handling
+    $(".flymon-tag").each(function() {
+      const element = $(this);
+      const data = element.data();
+      const query = {'action': 'price'};
+      for (const [key, value] of Object.entries(data)) {
+        query[key] = value;
+      }
+      $.post({
+        url: FLYMON.ajaxUrl, 
+        data: query, 
+        success: function(response) { flymonWidget(element, response) },
+        error: function(response) { flymonError(element, response.responseJSON) },
+      });
+    });
+
     function flymonWidget(element, response) {
       const resJSON = JSON.parse(response);
       const success = resJSON.success;
       if (success) {
         const data = resJSON.data;
         const deeplink = buildSearchDeeplink(element.data());
-        element.html(`<a href="${deeplink}" target="_blank" rel="nofollow">${data.currency} ${data.price}</a>`);
+        element.html(`
+          <a href="${deeplink}" target="_blank" rel="nofollow">${data.currency} ${data.price}</a>
+          <span class="flymon-tag__tooltip">🚀 ${data.outboundDate} - ${data.inboundDate} 🏁</span>
+        `);
       } else {
         flymonError(element, resJSON);
       }
@@ -19,7 +36,10 @@
     
     function flymonError(element, resJSON) {
       const deeplink = buildSearchDeeplink(element.data());
-      element.html(`<a href="${deeplink}" target="_blank" rel="nofollow">...</a>`);
+      element.html(`
+        <a href="${deeplink}" target="_blank" rel="nofollow">...</a>
+        <span class="flymon-tag__tooltip">🤔 No result, click to check</span>
+      `);
     };
 
     function buildSearchDeeplink(data) {
@@ -40,20 +60,6 @@
       return `${deeplinkHost}?${deeplinkParams}`;
     }
 
-    $(".flymon-tag").each(function() {
-      const element = $(this);
-      const data = element.data();
-      const query = {'action': 'price'};
-      for (const [key, value] of Object.entries(data)) {
-        query[key] = value;
-      }
-      $.post({
-        url: FLYMON.ajaxUrl, 
-        data: query, 
-        success: function(response) { flymonWidget(element, response) },
-        error: function(response) { flymonError(element, response.responseJSON) },
-      });
-      
-    });
-  });
+  }); // $(document).ready()
+
 })( jQuery );

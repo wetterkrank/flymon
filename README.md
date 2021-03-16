@@ -1,15 +1,19 @@
 # Flymon
 
-A WordPress plugin to display the lowest flight price for a given route/dates in your blog.  
-Powers the cheapest flights monitor here: https://escapefromberl.in
+A WordPress plugin to display the lowest travel prices for given routes/dates in your blog.  
+Powers the flight price monitor here: https://escapefromberl.in
 
 ## Installation
 
 Copy the plugin into the plugins directory; activate.
+In WP Settings menu, open Flymon page and add your Kiwi.com API key.
 
 ## Usage
 
-To display the price in your post or page, insert the shortcode trip_price in the paragraph.
+To display the price in your post or page, insert the shortcode `trip_price` in the paragraph.  
+
+For locations, use IATA codes or check out [Kiwi's locations API](https://tequila.kiwi.com/portal/docs/tequila_api/locations_api).
+For dates, you can use a wide range of expressions -- whatever can be parsed by PHP's [`strtotime()`](https://www.php.net/manual/en/function.strtotime.php).
 
 **Shortcode parameters & examples (+ default values):**
 -   from: BER, berlin\_de (required)
