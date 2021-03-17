@@ -109,9 +109,7 @@ class Flight_Prices_Monitor_Public {
 				. '" data-affilid="' . $this->config['affilid']
 				. '"';
 		// Mind the ellipsis dots in one line
-		return '<span class="flymon-tag" ' . $data . '>
-			<span class="flymon-tag__dot1">.</span><span class="flymon-tag__dot2">.</span><span class="flymon-tag__dot3">.</span>
-		</span>';
+		return '<span class="flymon-tag" ' . $data . '><span class="flymon-tag__dot1">.</span><span class="flymon-tag__dot2">.</span><span class="flymon-tag__dot3">.</span></span>';
 	}
 
 	// Adds AJAX handlers for the public-facing side of the site.

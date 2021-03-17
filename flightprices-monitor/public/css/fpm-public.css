@@ -41,6 +41,8 @@
 /*Tooltip text*/
 .flymon-tag {
     position: relative;
+    display: inline;
+    white-space: nowrap;
   }
   
   .flymon-tag .flymon-tag__tooltip {

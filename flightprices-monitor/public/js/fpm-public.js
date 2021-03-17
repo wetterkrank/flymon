@@ -25,10 +25,7 @@
       if (success) {
         const data = resJSON.data;
         const deeplink = buildSearchDeeplink(element.data());
-        element.html(`
-          <a href="${deeplink}" target="_blank" rel="nofollow">${data.currency} ${data.price}</a>
-          <span class="flymon-tag__tooltip">🚀 ${data.outboundDate} - ${data.inboundDate} 🏁</span>
-        `);
+        element.html(`<a href="${deeplink}" target="_blank" rel="nofollow">${data.currency} ${data.price}</a><span class="flymon-tag__tooltip">🚀 ${data.outboundDate} - ${data.inboundDate} 🏁</span>`);
       } else {
         flymonError(element, resJSON);
       }
@@ -36,10 +33,7 @@
     
     function flymonError(element, resJSON) {
       const deeplink = buildSearchDeeplink(element.data());
-      element.html(`
-        <a href="${deeplink}" target="_blank" rel="nofollow">...</a>
-        <span class="flymon-tag__tooltip">🤔 No result, click to check</span>
-      `);
+      element.html(`<a href="${deeplink}" target="_blank" rel="nofollow">...</a><span class="flymon-tag__tooltip">🤔 No result, click to check</span>`);
     };
 
     function buildSearchDeeplink(data) {

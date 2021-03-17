@@ -5,7 +5,7 @@
  * Plugin Name:       Flymon
  * Plugin URI:        http://escapefromberl.in/flight-prices-monitor/
  * Description:       Displays the lowest flight price for selected route & time range
- * Version:           0.1
+ * Version:           0.2
  * Author:            wetterkrank
  * Author URI:        http://escapefromberl.in
  * License:           GPL-2.0+
@@ -19,7 +19,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'FPM_VERSION', '0.1' );
+define( 'FPM_VERSION', '0.2' );
 
 // The code that runs during plugin activation
 function activate_flight_prices_monitor() {
