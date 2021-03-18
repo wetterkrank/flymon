@@ -22,14 +22,11 @@
     function flymonWidget(element, response) {
       const resJSON = JSON.parse(response);
       if (resJSON.success) {
+        const params = element.data();
         const data = resJSON.data;
-        const props = element.data();
-        console.log(props);
-        console.log(data);
         const outboundDate = data.outboundDate.slice(0, 5).replaceAll('-', '.');
         const inboundDate = data.inboundDate.slice(0, 5).replaceAll('-', '.');
-        const deeplink = (props.deeplink_type === "booking") ? data.deeplink : buildSearchDeeplink(props);
-        // const deeplink = buildSearchDeeplink(element.data());
+        const deeplink = (params.deeplink_type === "booking") ? data.deeplink : buildSearchDeeplink(params);
         element.html(`<a href="${deeplink}" target="_blank" rel="nofollow">${data.currency} ${data.price}</a><span class="flymon-tag__tooltip">🚀 ${outboundDate} - ${inboundDate} 🏁</span>`);
       } else {
         flymonError(element, resJSON);

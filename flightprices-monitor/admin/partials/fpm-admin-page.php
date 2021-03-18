@@ -38,6 +38,7 @@
                 <li>transport: aircraft, bus, train -- comma-separated (aircraft)</li>
                 <li>currency (EUR)</li>
                 <li>locale (en)</li>
+                <li>deeplink_type: search|booking (search)</li>
             </ul>
             <p>
                 <b>Examples:</b><br/>

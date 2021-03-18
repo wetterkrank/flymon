@@ -23,6 +23,7 @@ To display the price in your post or page, insert the shortcode `trip_price` in 
 -   transport: aircraft, bus, train -- comma-separated (aircraft)
 -   currency (EUR)
 -   locale (en)
+-   deeplink_type: search|booking (search)
 
 For locations, use IATA codes or check out [Kiwi's locations API](https://tequila.kiwi.com/portal/docs/tequila_api/locations_api).
 For dates, you can use a wide range of expressions -- whatever can be parsed by PHP's [`strtotime()`](https://www.php.net/manual/en/function.strtotime.php).

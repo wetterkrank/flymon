@@ -1,5 +1,6 @@
 <?php
 
+// TODO: Better error reporting (200 instead of 500), 
 class Flight_Prices_Monitor_Public {
 
 	private $name;
@@ -122,7 +123,6 @@ class Flight_Prices_Monitor_Public {
 		unset($query['security']);
 		unset($query['deeplink_type']); // we return the booking deeplink anyway and let front-end app decide
 		
-		// TODO: validate the rest of the query params
 		$required = ['fly_from', 'fly_to', 'date_from', 'date_to'];
 		foreach ( $required as $term ) {
 			if ( !isset($query[$term]) ) $this->throw_error(400, "'{$term}' not defined");
@@ -140,7 +140,6 @@ class Flight_Prices_Monitor_Public {
 			$price = $kiwi_api->request_price($query, $config);
 			if ( !$price ) $this->throw_error(500, 'Could not retrieve the price from Kiwi, unknown error');
 			
-			// TODO: sanitize for SQL
 			$cache_time = $config['cache_hours'] * HOUR_IN_SECONDS;
 			set_transient($search_id, json_encode($price, JSON_UNESCAPED_SLASHES), $cache_time);
 		};

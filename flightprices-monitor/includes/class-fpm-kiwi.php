@@ -45,8 +45,8 @@ class KIWI_API {
 		$body = json_decode( $api_response['body'], true ); // 'true' to return an array
 		if ($body['data']) { // no data when nothing found
 			$first_result = $body['data'][0];
-			$output['price'] = $first_result['price'];
-			$output['currency'] = $body['currency'];
+			$output['price'] = filter_var($first_result['price'], FILTER_SANITIZE_NUMBER_INT);
+			$output['currency'] = filter_var($body['currency'], FILTER_SANITIZE_STRING);
 			$output['from'] = $first_result['flyFrom'];
 			$output['to'] = $first_result['flyTo'];
 			$output['outboundDate'] = date("d-m-Y", strtotime($first_result['utc_departure']));
