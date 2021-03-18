@@ -12,7 +12,7 @@
         query[key] = value;
       }
       $.post({
-        url: FLYMON.ajaxUrl, 
+        url: WP_FLYMON.ajaxUrl, // The WP_FLYMON const is set when enqueueing the scripts
         data: query, 
         success: function(response) { flymonWidget(element, response) },
         error: function(response) { flymonError(element, response.responseJSON) },
@@ -24,8 +24,10 @@
       const success = resJSON.success;
       if (success) {
         const data = resJSON.data;
+        const outboundDate = data.outboundDate.slice(0, 5).replaceAll('-', '.');
+        const inboundDate = data.inboundDate.slice(0, 5).replaceAll('-', '.');
         const deeplink = buildSearchDeeplink(element.data());
-        element.html(`<a href="${deeplink}" target="_blank" rel="nofollow">${data.currency} ${data.price}</a><span class="flymon-tag__tooltip">🚀 ${data.outboundDate} - ${data.inboundDate} 🏁</span>`);
+        element.html(`<a href="${deeplink}" target="_blank" rel="nofollow">${data.currency} ${data.price}</a><span class="flymon-tag__tooltip">🚀 ${outboundDate} - ${inboundDate} 🏁</span>`);
       } else {
         flymonError(element, resJSON);
       }

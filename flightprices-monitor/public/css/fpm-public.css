@@ -46,21 +46,21 @@
   }
   
   .flymon-tag .flymon-tag__tooltip {
-    font-size: 0.8em;
+    position: absolute;
     visibility: hidden;
-    width: 16em;
+    width: 14em;
+    margin-left: -7em;
+    bottom: 125%;
+    padding: 5px;
+    left: 50%;
+    z-index: 1;
     background-color: rgba(0,0,0,0.7);
     color: #fff;
+    font-size: 0.8em;
     text-align: center;
     border-radius: 4px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -8em;
     opacity: 0;
-    transition: all .3s .2s;
+    transition: all .4s .3s;
     transform: translate3d(0px, 20px, 0px);
   }
   

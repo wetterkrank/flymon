@@ -35,7 +35,7 @@ class Flight_Prices_Monitor_Public {
 		// Also sets the AJAX URL on front end; preferred to using wp_localize_script()
 		wp_add_inline_script( 
 			$this->name, 
-			'const FLYMON = ' . json_encode( array(	'ajaxUrl' => admin_url('admin-ajax.php') ) ), 
+			'const WP_FLYMON = ' . json_encode( array( 'ajaxUrl' => admin_url('admin-ajax.php') ) ), 
 			'before' 
 		);
 	}
@@ -95,6 +95,9 @@ class Flight_Prices_Monitor_Public {
 		if (count($unlisted) !== 0)
 			$a['transport'] = 'aircraft';
 
+		// NOTE: must be called inside init or any subsequent hook; register_shortcodes() is the case
+		$ajaxNonce = wp_create_nonce('flymon-price-request'); 
+
 		// Return HTML widget replacing the fpm_price shortcode
 		$data = 'data-fly_from="' . $a['from']
 				. '" data-fly_to="' . $a['to']
@@ -107,6 +110,7 @@ class Flight_Prices_Monitor_Public {
 				. '" data-locale="' . $a['locale']
 				. '" data-vehicle_type="' . $a['transport']
 				. '" data-affilid="' . $this->config['affilid']
+				. '" data-security="' . $ajaxNonce
 				. '"';
 		// Mind the ellipsis dots in one line
 		return '<span class="flymon-tag" ' . $data . '><span class="flymon-tag__dot1">.</span><span class="flymon-tag__dot2">.</span><span class="flymon-tag__dot3">.</span></span>';
@@ -120,12 +124,14 @@ class Flight_Prices_Monitor_Public {
 
 	// Handler for the AJAX price request; returns the price JSON
 	function get_price() {
-		// TODO: auth: check_ajax_referer(), wp_nonce() (?)
 		$query = $_POST;
 		$response = [];
+		check_ajax_referer('flymon-price-request', 'security');
+		
+		unset($query['action']);
+		unset($query['security']);
 		
 		// TODO: validate the rest of the query params
-		unset($query['action']);
 		$required = ['fly_from', 'fly_to', 'date_from', 'date_to'];
 		foreach ( $required as $term ) {
 			if ( !isset($query[$term]) ) $this->throw_error(400, "'{$term}' not defined");
