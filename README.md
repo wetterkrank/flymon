@@ -5,15 +5,12 @@ Powers the flight price monitor here: https://escapefromberl.in
 
 ## Installation
 
-Copy the plugin into the plugins directory; activate.
-In WP Settings menu, open Flymon page and add your Kiwi.com API key.
+Download the plugin, copy the folder `flightprices-monitor` into the plugins directory; activate.  
+Open Settings -> Flymon, add your Kiwi.com API key + affiliate id for deeplinks.
 
 ## Usage
 
 To display the price in your post or page, insert the shortcode `trip_price` in the paragraph.  
-
-For locations, use IATA codes or check out [Kiwi's locations API](https://tequila.kiwi.com/portal/docs/tequila_api/locations_api).
-For dates, you can use a wide range of expressions -- whatever can be parsed by PHP's [`strtotime()`](https://www.php.net/manual/en/function.strtotime.php).
 
 **Shortcode parameters & examples (+ default values):**
 -   from: BER, berlin\_de (required)
@@ -26,6 +23,9 @@ For dates, you can use a wide range of expressions -- whatever can be parsed by 
 -   transport: aircraft, bus, train -- comma-separated (aircraft)
 -   currency (EUR)
 -   locale (en)
+
+For locations, use IATA codes or check out [Kiwi's locations API](https://tequila.kiwi.com/portal/docs/tequila_api/locations_api).
+For dates, you can use a wide range of expressions -- whatever can be parsed by PHP's [`strtotime()`](https://www.php.net/manual/en/function.strtotime.php).
 
 Examples:
 ```
