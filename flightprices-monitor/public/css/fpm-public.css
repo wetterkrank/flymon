@@ -48,8 +48,8 @@
   .flymon-tag .flymon-tag__tooltip {
     position: absolute;
     visibility: hidden;
-    width: 14em;
-    margin-left: -7em;
+    width: 10em;
+    margin-left: -5em;
     bottom: 125%;
     padding: 5px;
     left: 50%;

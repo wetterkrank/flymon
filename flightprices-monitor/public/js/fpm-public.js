@@ -21,12 +21,15 @@
 
     function flymonWidget(element, response) {
       const resJSON = JSON.parse(response);
-      const success = resJSON.success;
-      if (success) {
+      if (resJSON.success) {
         const data = resJSON.data;
+        const props = element.data();
+        console.log(props);
+        console.log(data);
         const outboundDate = data.outboundDate.slice(0, 5).replaceAll('-', '.');
         const inboundDate = data.inboundDate.slice(0, 5).replaceAll('-', '.');
-        const deeplink = buildSearchDeeplink(element.data());
+        const deeplink = (props.deeplink_type === "booking") ? data.deeplink : buildSearchDeeplink(props);
+        // const deeplink = buildSearchDeeplink(element.data());
         element.html(`<a href="${deeplink}" target="_blank" rel="nofollow">${data.currency} ${data.price}</a><span class="flymon-tag__tooltip">🚀 ${outboundDate} - ${inboundDate} 🏁</span>`);
       } else {
         flymonError(element, resJSON);
@@ -35,7 +38,7 @@
     
     function flymonError(element, resJSON) {
       const deeplink = buildSearchDeeplink(element.data());
-      element.html(`<a href="${deeplink}" target="_blank" rel="nofollow">...</a><span class="flymon-tag__tooltip">🤔 No result, click to check</span>`);
+      element.html(`<a href="${deeplink}" target="_blank" rel="nofollow">...</a><span class="flymon-tag__tooltip">🤔 No result</span>`);
     };
 
     function buildSearchDeeplink(data) {

@@ -63,6 +63,9 @@
 
 		// The class responsible for defining all actions that occur in the public-facing side of the site.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-fpm-public.php';
+		
+		// The helper class responsible for KIWI API interaction.
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-fpm-kiwi.php';
 
 		$this->loader = new Flight_Prices_Monitor_Loader();
 
@@ -77,10 +80,7 @@
 	// Registers all of the hooks related to the admin area functionality of the plugin.
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Flight_Prices_Monitor_Admin( 
-			$this->get_name(), 
-			$this->get_version()
-		);
+		$plugin_admin = new Flight_Prices_Monitor_Admin( $this->get_name(), $this->get_version() );
 
 		// JS and CSS
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
