@@ -5,8 +5,8 @@ Powers the flight price monitor here: https://escapefromberl.in
 
 ## Installation
 
-Copy the plugin folder `flightprices-monitor` into the plugins directory; activate.  
-Open Settings -> Flymon and add your Kiwi.com API key + affiliate id for deeplinks.
+Download the plugin, copy the folder `flightprices-monitor` into the plugins directory; activate.  
+Open Settings -> Flymon, add your Kiwi.com API key + affiliate id for deeplinks.
 
 ## Usage
 
