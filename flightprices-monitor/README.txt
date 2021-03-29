@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Flymon ===
 Contributors: wetterkrank
 Donate link: http://escapefromberl.in
 Tags: travel, flight prices, rail prices, bus prices
@@ -13,7 +13,7 @@ A WordPress plugin that displays the lowest travel prices for given routes/dates
 == Description ==
 
 A WordPress plugin that displays the trip price for given route/dates.
-The prices are provided by Kiwi.com API and cached (cache time can be configured).
+The prices are provided by Kiwi.com API and cached (cache expiry time can be configured).
 You can set your Kiwi Tequila affiliate id to be added to deeplinks.
 
 == Installation ==
@@ -26,18 +26,18 @@ To display the price in your post or page, insert the shortcode *trip_price* in 
 For locations, use IATA codes or check out Kiwi's locations API.
 For dates, you can use a wide range of expressions -- whatever can be parsed by PHP's *strtotime* function.
 
-**Shortcode parameters & examples (+ default values):**
-
-- from: BER, berlin\_de (required)
-- to: MUC, innsbruck\_at (required)
-- earliest: 2022-01-30, tomorrow (now)
-- latest: 2022-12-31, +2 weeks (now + 3 months)
-- min\_days (7)
-- max\_days (14)
-- max\_stops (0)
-- transport: aircraft, bus, train -- comma-separated (aircraft)
-- currency (EUR)
-- locale (en)
+Shortcode parameters & examples (+ default values):
+-   from: BER, berlin_de (required)
+-   to: MUC, innsbruck_at (required)
+-   earliest: 2022-01-30, tomorrow (now)
+-   latest: 2022-12-31, +2 weeks (now + 3 months)
+-   min_days (7)
+-   max_days (14)
+-   max_stops (0)
+-   transport: aircraft, bus, train -- comma-separated (aircraft)
+-   currency (EUR)
+-   locale (en)
+-   deeplink_type: search|booking (search)
 
 Shortcode examples:
 
