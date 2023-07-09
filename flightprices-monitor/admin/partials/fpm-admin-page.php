@@ -17,12 +17,12 @@
                 <?php submit_button(__('Save Changes'), 'primary'); ?>
             </form>
         </div>
-    
+
         <div>
             <h2>Shortcodes cheatsheet</h2>
             <p>
                 To display the price in your post, insert the shortcode <code>trip_price</code> in the paragraph.<br/>
-                Keep an eye on the quotes -- they can be messed up when pasting.
+                Keep an eye on the quotation marks -- they can be messed up when pasting.
             </p>
             <p>
                 <b>Shortcode parameters & examples (+ default values):</b>
@@ -30,16 +30,22 @@
             <ul style="list-style: disc; padding: 0 20px;">
                 <li>from: BER, berlin_de (required)</li>
                 <li>to: MUC, innsbruck_at (required)</li>
-                <li>earliest: 2022-01-30, tomorrow (now)</li>
-                <li>latest: 2022-12-31, +2 weeks (now + 3 months)</li>
-                <li>min_days (7)</li>
-                <li>max_days (14)</li>
+                <li>earliest: 2023-01-30, tomorrow (now)</li>
+                <li>latest: 2023-12-31, +2 weeks (now + 3 months)</li>
+                <li>min_days (none)</li>
+                <li>max_days (none)</li>
                 <li>max_stops (0)</li>
                 <li>transport: aircraft, bus, train -- comma-separated (aircraft)</li>
                 <li>currency (EUR)</li>
                 <li>locale (en)</li>
                 <li>deeplink_type: search|booking (search)</li>
             </ul>
+
+            <p>
+              For locations, use IATA codes or check out <a href="https://tequila.kiwi.com/portal/docs/tequila_api/locations_api">Kiwi's locations API</a>.<br />
+              For dates, you can use a wide range of expressions -- whatever can be parsed by PHP's <a href="https://www.php.net/manual/en/function.strtotime.php">`strtotime()`</a>.<br />
+              Either both max and min days at destination must be specified, or none of them. If none are set, Kiwi searches for one way.<br />
+            </p>
             <p>
                 <b>Examples:</b><br/>
             </p>

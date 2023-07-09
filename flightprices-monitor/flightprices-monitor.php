@@ -3,11 +3,11 @@
 /**
  * @wordpress-plugin
  * Plugin Name:       Flymon
- * Plugin URI:        http://escapefromberl.in/flight-prices-monitor/
+ * Plugin URI:        https://github.com/wetterkrank/flymon
  * Description:       Displays the lowest flight price for selected route & time range
- * Version:           0.2
+ * Version:           0.3
  * Author:            wetterkrank
- * Author URI:        http://escapefromberl.in
+ * Author URI:        https://github.com/wetterkrank/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       flymon
@@ -19,7 +19,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'FPM_VERSION', '0.2' );
+define( 'FPM_VERSION', '0.3' );
 
 // The code that runs during plugin activation
 function activate_flight_prices_monitor() {

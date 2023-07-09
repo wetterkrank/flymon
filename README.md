@@ -1,24 +1,24 @@
 # Flymon
 
-A WordPress plugin to display the lowest travel prices for given routes/dates in your blog.  
+A WordPress plugin to display the lowest travel prices for given routes/dates in your blog.
 Powers the flight price monitor here: https://escapefromberl.in
 
 ## Installation
 
-Download the plugin, copy the folder `flightprices-monitor` into the plugins directory; activate.  
+Download the plugin, copy the folder `flightprices-monitor` into the plugins directory; activate.
 Open Settings -> Flymon, add your Kiwi.com API key + affiliate id for deeplinks.
 
 ## Usage
 
-To display the price in your post or page, insert the shortcode `trip_price` in the paragraph.  
+To display the price in your post or page, insert the shortcode `trip_price` in the paragraph.
 
 **Shortcode parameters & examples (+ default values):**
 -   from: BER, berlin\_de (required)
 -   to: MUC, innsbruck\_at (required)
--   earliest: 2022-01-30, tomorrow (now)
--   latest: 2022-12-31, +2 weeks (now + 3 months)
--   min\_days (7)
--   max\_days (14)
+-   earliest: 2023-01-30, tomorrow (now)
+-   latest: 2023-12-31, +2 weeks (+3 months from now)
+-   min\_days (none)
+-   max\_days (none)
 -   max\_stops (0)
 -   transport: aircraft, bus, train -- comma-separated (aircraft)
 -   currency (EUR)
@@ -27,6 +27,7 @@ To display the price in your post or page, insert the shortcode `trip_price` in 
 
 For locations, use IATA codes or check out [Kiwi's locations API](https://tequila.kiwi.com/portal/docs/tequila_api/locations_api).
 For dates, you can use a wide range of expressions -- whatever can be parsed by PHP's [`strtotime()`](https://www.php.net/manual/en/function.strtotime.php).
+For return trip search, both max and min days at destination must be specified. If none are set, we search for one way.
 
 Examples:
 ```

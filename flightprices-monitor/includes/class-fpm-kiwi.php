@@ -26,10 +26,10 @@ class KIWI_API {
 			'timeout' => 45
 		);
 		$response = wp_remote_get($url, $args);
-		
-		if ( is_array($response) 
-			&& !is_wp_error($response) 
-			&& wp_remote_retrieve_response_code($response) === 200 ) 
+
+		if ( is_array($response)
+			&& !is_wp_error($response)
+			&& wp_remote_retrieve_response_code($response) === 200 )
 		{
 			$output = $this->package_output($response);
 			return $output;
@@ -50,8 +50,10 @@ class KIWI_API {
 			$output['from'] = $first_result['flyFrom'];
 			$output['to'] = $first_result['flyTo'];
 			$output['outboundDate'] = date("d-m-Y", strtotime($first_result['utc_departure']));
-			$returnLeg = $this->array_where( $first_result['route'], fn($leg) => $leg['return'] === 1 );
-			$output['inboundDate'] = date("d-m-Y", strtotime($returnLeg['utc_departure']));
+      $returnLeg = $this->array_where( $first_result['route'], fn($leg) => $leg['return'] === 1 );
+      if ($returnLeg) {
+        $output['inboundDate'] = date("d-m-Y", strtotime($returnLeg['utc_departure']));
+      }
 			$output['deeplink'] = $first_result['deep_link'];
 		}
 		return $output;

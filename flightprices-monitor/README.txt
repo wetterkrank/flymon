@@ -21,7 +21,7 @@ You can set your Kiwi Tequila affiliate id to be added to deeplinks.
 Copy the plugin into the plugins directory; activate.
 In WP Settings menu, open Flymon page and add your Kiwi.com API key.
 
-To display the price in your post or page, insert the shortcode *trip_price* in the paragraph.  
+To display the price in your post or page, insert the shortcode *trip_price* in the paragraph.
 
 For locations, use IATA codes or check out Kiwi's locations API.
 For dates, you can use a wide range of expressions -- whatever can be parsed by PHP's *strtotime* function.
@@ -29,10 +29,10 @@ For dates, you can use a wide range of expressions -- whatever can be parsed by 
 Shortcode parameters & examples (+ default values):
 -   from: BER, berlin_de (required)
 -   to: MUC, innsbruck_at (required)
--   earliest: 2022-01-30, tomorrow (now)
--   latest: 2022-12-31, +2 weeks (now + 3 months)
--   min_days (7)
--   max_days (14)
+-   earliest: 2023-01-30, tomorrow (now)
+-   latest: 2023-12-31, +2 weeks (+3 months from now)
+-   min_days (none; remove for one-way search)
+-   max_days (none; remove for one-way search)
 -   max_stops (0)
 -   transport: aircraft, bus, train -- comma-separated (aircraft)
 -   currency (EUR)
@@ -61,3 +61,6 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 = 0.2 =
 * Moved the API request and result caching to Wordpress itself, instead of an external proxy.
 * Added the vehicle type support, tooltips on hover, some error handling.
+
+= 0.3 =
+* Added the one-way search support.
