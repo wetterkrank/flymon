@@ -16,21 +16,21 @@
 
 // If this file is called directly, abort
 if ( ! defined( 'WPINC' ) ) {
-	die;
+  die;
 }
 
 define( 'FPM_VERSION', '0.3' );
 
 // The code that runs during plugin activation
 function activate_flight_prices_monitor() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-fpm-activator.php';
-	Flight_Prices_Monitor_Activator::activate();
+  require_once plugin_dir_path( __FILE__ ) . 'includes/class-fpm-activator.php';
+  Flight_Prices_Monitor_Activator::activate();
 }
 
 // The code that runs during plugin deactivation
 function deactivate_flight_prices_monitor() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-fpm-deactivator.php';
-	Flight_Prices_Monitor_Deactivator::deactivate();
+  require_once plugin_dir_path( __FILE__ ) . 'includes/class-fpm-deactivator.php';
+  Flight_Prices_Monitor_Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_flight_prices_monitor' );
@@ -42,7 +42,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-fpm.php';
 
 // Begins execution of the plugin
 function run_flight_prices_monitor() {
-	$plugin = new Flight_Prices_Monitor();
-	$plugin->run();
+  $plugin = new Flight_Prices_Monitor();
+  $plugin->run();
 }
 run_flight_prices_monitor();

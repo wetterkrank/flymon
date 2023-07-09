@@ -6,8 +6,8 @@
  */
 class Flight_Prices_Monitor_Activator {
 
-	public static function activate() {
+  public static function activate() {
 
-	}
+  }
 
 }

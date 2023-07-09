@@ -6,8 +6,8 @@
  */
 class Flight_Prices_Monitor_Deactivator {
 
-	public static function deactivate() {
+  public static function deactivate() {
 
-	}
+  }
 
 }
