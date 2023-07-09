@@ -25,9 +25,9 @@ To display the price in your post or page, insert the shortcode `trip_price` in 
 -   locale (en)
 -   deeplink_type: search|booking (search)
 
-For locations, use IATA codes or check out [Kiwi's locations API](https://tequila.kiwi.com/portal/docs/tequila_api/locations_api).
-For dates, you can use a wide range of expressions -- whatever can be parsed by PHP's [`strtotime()`](https://www.php.net/manual/en/function.strtotime.php).
-For return trip search, both max and min days at destination must be specified. If none are set, we search for one way.
+For locations, use IATA codes or check out [Kiwi's locations API](https://tequila.kiwi.com/portal/docs/tequila_api/locations_api).  
+For dates, you can use a wide range of expressions -- whatever can be parsed by PHP's [`strtotime()`](https://www.php.net/manual/en/function.strtotime.php).  
+For return trip search, both max and min days at destination must be specified. If none are set, we search for one way.  
 
 Examples:
 ```
