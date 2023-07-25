@@ -30,7 +30,9 @@
         const data = resJSON.data;
         const outboundDate = data.outboundDate.slice(0, 5).replaceAll("-", ".");
         const inboundDate = data.inboundDate?.slice(0, 5)?.replaceAll("-", ".");
-        const tripDates = inboundDate ? `🚀 ${outboundDate} - ${inboundDate} 🏁` : `🚀 ${outboundDate}`;
+        const tripDates = inboundDate
+          ? `🚀 ${outboundDate} - ${inboundDate} 🏁`
+          : `🚀 ${outboundDate}`;
         const deeplink =
           params.deeplink_type === "booking"
             ? data.deeplink
@@ -67,7 +69,7 @@
         stopNumber: data.max_stopovers,
         affilid: data.affilid,
       };
-      Object.keys(params).forEach((key) => !params[key] && delete params[key]);
+      Object.keys(params).forEach((key) => params[key] ?? delete params[key]);
       const deeplinkParams = new URLSearchParams(params);
       return `${deeplinkHost}?${deeplinkParams}`;
     }
