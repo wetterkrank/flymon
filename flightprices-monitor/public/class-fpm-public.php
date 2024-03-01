@@ -84,9 +84,6 @@ class Flight_Prices_Monitor_Public {
 
     if ( !in_array($a['deeplink'], ['search', 'booking']) ) $a['deeplink'] = 'search';
 
-    // NOTE: must be called inside init or any subsequent hook; register_shortcodes() is the case
-    $ajaxNonce = wp_create_nonce('flymon-price-request');
-
     // Return HTML widget replacing the fpm_price shortcode
     $data = 'data-fly_from="' . $a['from']
         . '" data-fly_to="' . $a['to']
@@ -100,7 +97,6 @@ class Flight_Prices_Monitor_Public {
         . '" data-vehicle_type="' . $a['transport']
         . '" data-affilid="' . $this->config['affilid']
         . '" data-deeplink_type="' . $a['deeplink']
-        . '" data-security="' . $ajaxNonce
         . '"';
 
     // Mind the ellipsis dots in one line
@@ -117,10 +113,8 @@ class Flight_Prices_Monitor_Public {
   function get_price() {
     $query = $_POST;
     $response = [];
-    check_ajax_referer('flymon-price-request', 'security');
 
     unset($query['action']);
-    unset($query['security']);
     unset($query['deeplink_type']); // we return the booking deeplink anyway and let front-end app decide
 
     $required = ['fly_from', 'fly_to', 'date_from', 'date_to'];
