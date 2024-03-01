@@ -46,7 +46,7 @@ class KIWI_API {
     if ($body['data']) { // no data when nothing found
       $first_result = $body['data'][0];
       $output['price'] = filter_var($first_result['price'], FILTER_SANITIZE_NUMBER_INT);
-      $output['currency'] = filter_var($body['currency'], FILTER_SANITIZE_STRING);
+      $output['currency'] = htmlspecialchars($body['currency']);
       $output['from'] = $first_result['flyFrom'];
       $output['to'] = $first_result['flyTo'];
       $output['outboundDate'] = date("d-m-Y", strtotime($first_result['utc_departure']));
@@ -59,7 +59,7 @@ class KIWI_API {
     return $output;
   }
 
-  // Applies $fn to each value and returns the 1st value where $fn is true
+  // Calls $fn with each value and returns the 1st value for which the result is true
   function array_where(array $arr, callable $fn) {
     foreach ($arr as $x) {
       if (call_user_func($fn, $x) === true)

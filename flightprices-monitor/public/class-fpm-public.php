@@ -61,8 +61,8 @@ class Flight_Prices_Monitor_Public {
     ), $atts);
 
     // Validate the input and set the rest of the defaults
-    $a['from'] = filter_var($a['from'], FILTER_SANITIZE_STRING);
-    $a['to'] = filter_var($a['to'], FILTER_SANITIZE_STRING);
+    $a['from'] = htmlspecialchars($a['from']);
+    $a['to'] = htmlspecialchars($a['to']);
 
     $earliest = strtotime($a['earliest']);
     $a['earliest'] = $earliest ? date('d/m/Y', $earliest) : date('d/m/Y');
